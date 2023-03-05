@@ -1,2 +1,5 @@
-# Blender-Minecraft-Scene
-I try to learn the Python API for Blender to create a Minecraft scene. 
+#Blender Scene Generator
+
+Basically I'm trying to use cubes to create some sort of terrain or scene. 
+
+I am using the Blender Python API to complete this. 

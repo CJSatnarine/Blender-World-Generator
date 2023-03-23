@@ -2,7 +2,7 @@
 import bpy;
 import random;
 
-#Functions to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
+#Function to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
 def cleanScene():
     # Changes the mode to object mode if it is in Edit mode. 
     if (bpy.context.active_object and bpy.context.active_object.mode == "EDIT"):
@@ -17,8 +17,8 @@ def cleanScene():
     # Selects all the objects and then deletes.     
     bpy.ops.object.select_all(action = "SELECT");
     bpy.ops.object.delete();
-    
-# Clears the scene. 
+
+# Calling the clean scene method. 
 cleanScene();
 
 # Size of each cube. 
@@ -36,6 +36,12 @@ for x in range(20):
 
             # Add the cubes. 
             bpy.ops.mesh.primitive_cube_add(size = size, location=location, scale=(1, 1, 1));
+            # Add a new material slot. 
+            bpy.ops.object.material_slot_add();
+            
+            # Add a blue material to the mesh named "Cube". 
+            bpy.data.objects['Cube'].material_slots[0].material = bpy.data.materials['Material.001'];
+
             
 # Notes: 
 # - For loop for the grid: 
@@ -43,3 +49,4 @@ for x in range(20):
 #        - y is for creating cubes in the y axis. 
 #        - z is for creating cubes in the z axis. 
 # - I need to add the materials to the cubes and somehow save it in the Blender program. 
+# - I need to add a function to create a tree in a random position. This function will create cubes and put them in a way to look like a tree. It will also assign the correct materials to their proper cubes. 

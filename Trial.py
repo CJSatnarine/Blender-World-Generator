@@ -36,9 +36,22 @@ for x in range(20):
 
             # Add the cubes. 
             bpy.ops.mesh.primitive_cube_add(size = size, location=location, scale=(1, 1, 1));
+            # Set the newly created cube as the active object. 
+            activeObject = bpy.context.active_object;
             # Add a new material slot. 
-            bpy.ops.object.material_slot_add();
-            
+            # bpy.ops.object.material_slot_add();
+            # Creating a new material and assigning it to the active cube. 
+            material = bpy.data.materials.new("Material");
+            material.use_nodes = True;
+            materialNodes = material.node_tree.nodes;
+            materialLinks = material.node_tree.links;
+
+            activeObject.data.materials.append(material);
+
+            # Change the base colour. 
+            materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (1.0, 0.47, 1.0, 1.0)
+
+
 # Notes: 
 # - For loop for the grid: 
 #        - x is for creating cubes in the x axis. 

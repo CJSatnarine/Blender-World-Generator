@@ -39,10 +39,6 @@ for x in range(20):
             # Add a new material slot. 
             bpy.ops.object.material_slot_add();
             
-            # Add a blue material to the mesh named "Cube". 
-            bpy.data.objects['Cube'].material_slots[0].material = bpy.data.materials['Material.001'];
-
-            
 # Notes: 
 # - For loop for the grid: 
 #        - x is for creating cubes in the x axis. 

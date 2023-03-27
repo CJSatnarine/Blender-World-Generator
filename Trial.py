@@ -3,11 +3,10 @@ import bpy;
 import random;
 
 # Variables: 
-
-size = 1; # Size of each cube. 
-
-x = y = z = size / 2; # Setting the x, y, and z positions. 
-
+# Size of each cube.
+size = 1;  
+# Setting the x, y, and z positions.
+x = y = z = size / 2;  
 
 #Function to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
 def cleanScene():
@@ -25,8 +24,9 @@ def cleanScene():
     bpy.ops.object.select_all(action = "SELECT");
     bpy.ops.object.delete();
 
-# Iterate over each grid 'cell' we want a cube at.
+# Function to spawn the "ground" by creating several cubes using a nested for loop. 
 def spawnGround():  
+    # Iterate over each grid "cell" we want a cube at.
     for x in range(20):
         for y in range(20):
             for z in range(1): 
@@ -34,7 +34,7 @@ def spawnGround():
                 location = (x, y, z);
 
                 # Add the cubes. 
-                bpy.ops.mesh.primitive_cube_add(size = size, location=location, scale=(1, 1, 1));
+                bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (1, 1, 1));
                 # Set the newly created cube as the active object. 
                 activeObject = bpy.context.active_object;
                 # Add a new material slot. 
@@ -44,13 +44,13 @@ def spawnGround():
                 material.use_nodes = True;
                 materialNodes = material.node_tree.nodes;
                 materialLinks = material.node_tree.links;
-
+                
                 activeObject.data.materials.append(material);
 
                 # Change the base colour. 
                 materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (1.0, 0.47, 1.0, 1.0);
 
-# Calls the functions: 
+# Calling the functions: 
 cleanScene();
 spawnGround();
 
@@ -60,4 +60,5 @@ spawnGround();
 #        - y is for creating cubes in the y axis. 
 #        - z is for creating cubes in the z axis. 
 # - I need to add the materials to the cubes and somehow save it in the Blender program. 
+# - I need to replace the nested for loop with a recursive function to spawn the ground. 
 # - I need to add a function to create a tree in a random position. This function will create cubes and put them in a way to look like a tree. It will also assign the correct materials to their proper cubes. 

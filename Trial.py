@@ -7,6 +7,15 @@ import random;
 size = 1;  
 # Setting the x, y, and z positions.
 x = y = z = size / 2;  
+# Setting the number of cubes in each coordinate. 
+xNum = 20;
+yNum = 20;
+zNum = 1;
+# Setting the initial value for the number of cubes in each recursive call. 
+cubeCount = 0;
+# Setting the maximum amount of cubes that is needed to be created. 
+numOfCubes = xNum * yNum * zNum;
+print(numOfCubes);
 
 #Function to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
 def cleanScene():
@@ -27,14 +36,14 @@ def cleanScene():
 # Function to spawn the "ground" by creating several cubes using a nested for loop. 
 def spawnGround():  
     # Iterate over each grid "cell" we want a cube at.
-    for x in range(20):
-        for y in range(20):
-            for z in range(1): 
+    for x in range(xNum):
+        for y in range(yNum):
+            for z in range(zNum): 
                 # Set the location. 
                 location = (x, y, z);
 
                 # Add the cubes. 
-                bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (1, 1, 1));
+                bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size));
                 # Set the newly created cube as the active object. 
                 activeObject = bpy.context.active_object;
                 # Add a new material slot. 
@@ -53,6 +62,7 @@ def spawnGround():
 # Calling the functions: 
 cleanScene();
 spawnGround();
+
 
 # Notes: 
 # - For loop for the grid: 

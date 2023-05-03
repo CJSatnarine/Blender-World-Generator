@@ -8,9 +8,9 @@ size = 1;
 # Setting the x, y, and z positions.
 x = y = z = size / 2;  
 # Setting the number of cubes in each coordinate. 
-xNum = 20;
-yNum = 20;
-zNum = 1;
+xNum = 3;
+yNum = 3;
+zNum = 3;
 # Setting the initial value for the number of cubes in each recursive call. 
 cubeCount = 0;
 # Setting the maximum amount of cubes that is needed to be created. 
@@ -72,3 +72,4 @@ spawnGround();
 # - I need to add the materials to the cubes and somehow save it in the Blender program. 
 # - I need to replace the nested for loop with a recursive function to spawn the ground. 
 # - I need to add a function to create a tree in a random position. This function will create cubes and put them in a way to look like a tree. It will also assign the correct materials to their proper cubes. 
+# - I need to find a way to create creat and assign a single material to all the respective cubes. 

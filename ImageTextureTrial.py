@@ -20,3 +20,5 @@ if ob.data.materials:
 else:
     ob.data.materials.append(mat)
 
+# Notes: 
+# - Find a way to select a single face of a cube and then add the image to each face. Might have to do stuff with nodes. 

@@ -78,7 +78,11 @@ def spawnGround():
 
                     # Show the updates in the viewport. 
                     bmesh.update_edit_mesh(activeObject.data);
-                    print('face ', i, ' grabbed');                 
+                    print('Face ', i, ' grabbed');
+
+                    # Deselect the faces. 
+                    bm.faces[i].select = False;
+                    print('Face ', i, ' released');                
                 
                 # Add the material.  
                 activeObject.data.materials.append(material);

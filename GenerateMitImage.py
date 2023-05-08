@@ -1,5 +1,6 @@
 #Imports.
 import bpy;
+import bmesh;
 import random;
 
 # Variables: 
@@ -8,9 +9,9 @@ size = 1;
 # Setting the x, y, and z positions.
 x = y = z = size / 2;  
 # Setting the number of cubes in each coordinate. 
-xNum = 3;
-yNum = 3;
-zNum = 3;
+xNum = 1;
+yNum = 1;
+zNum = 1;
 # Setting the initial value for the number of cubes in each recursive call. 
 cubeCount = 0;
 # Setting the maximum amount of cubes that is needed to be created. 
@@ -51,8 +52,6 @@ def spawnGround():
                 # Object View Layer variable. 
                 activeObjectViewLayer = bpy.context.view_layer.objects.active;
                 
-                
-
                 # Add a new material slot. 
                 # bpy.ops.object.material_slot_add();
 
@@ -62,7 +61,26 @@ def spawnGround():
                 BSDF = material.node_tree.nodes["Principled BSDF"];
                 materialNodes = material.node_tree.nodes;
                 materialLinks = material.node_tree.links;
+
+                # Selecting each face and then assigning the material to that face. 
+                for i in range(6): 
+                    # Checks if the object is currently in edit mode, and if not, sets it into edit mode. 
+                    if (bpy.context.active_object.mode == "OBJECT"):
+                        bpy.ops.object.editmode_toggle();
+                    
+                    bm = bmesh.from_edit_mesh(activeObject.data);
+
+                    # Make sure the bmesh is up-to-date with the mesh data.
+                    bm.faces.ensure_lookup_table();
+                    
+                    # Set selecting the faces to be true. 
+                    bm.faces[i].select = True;
+
+                    # Show the updates in the viewport. 
+                    bmesh.update_edit_mesh(activeObject.data);
+                    print('face ', i, ' grabbed');                 
                 
+                # Add the material.  
                 activeObject.data.materials.append(material);
 
                 # Change the texture of the cube. 

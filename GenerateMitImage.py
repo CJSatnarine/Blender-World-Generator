@@ -1,7 +1,6 @@
 #Imports.
 import bpy;
 import bmesh;
-import random;
 
 # Variables: 
 # Size of each cube.
@@ -51,7 +50,7 @@ def spawnGround():
 
                 # Object View Layer variable. 
                 activeObjectViewLayer = bpy.context.view_layer.objects.active;
-                
+
                 # Add a new material slot. 
                 # bpy.ops.object.material_slot_add();
 
@@ -62,10 +61,13 @@ def spawnGround():
                 materialNodes = material.node_tree.nodes;
                 materialLinks = material.node_tree.links;
 
+                # Add the material.  
+                activeObject.data.materials.append(material);
+
                 # Selecting each face and then assigning the material to that face. 
                 for i in range(6): 
                     # Checks if the object is currently in edit mode, and if not, sets it into edit mode. 
-                    if (bpy.context.active_object.mode == "OBJECT"):
+                    if (bpy.context.active_object.mode != "EDIT"):
                         bpy.ops.object.editmode_toggle();
                     
                     bm = bmesh.from_edit_mesh(activeObject.data);
@@ -80,16 +82,17 @@ def spawnGround():
                     bmesh.update_edit_mesh(activeObject.data);
                     print('Face ', i, ' grabbed');
 
+                    # Appened the material to the face. 
+                    # bpy.ops.object.material_slot_assign({'object': activeObject});
+                    # bpy.ops.transform.translate(value=(0.169302, 0, 0), orient_axis_ortho='X', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', constraint_axis=(True, False, False), mirror=False, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False, snap=False, snap_elements={'INCREMENT'}, use_snap_project=False, snap_target='CLOSEST', use_snap_self=True, use_snap_edit=True, use_snap_nonedit=True, use_snap_selectable=False);
+
                     # Deselect the faces. 
                     bm.faces[i].select = False;
                     print('Face ', i, ' released');                
-                
-                # Add the material.  
-                activeObject.data.materials.append(material);
 
                 # Change the texture of the cube. 
                 textureImage = material.node_tree.nodes.new('ShaderNodeTexImage');
-                textureImage.image = bpy.data.images.load("C:\\Users\\satna\\OneDrive\\Desktop\\Programming\\Python\\Blender\\Blender-World-Generator\\DirtBlock.png");
+                textureImage.image = bpy.data.images.load("C://Users//satna//OneDrive//Desktop/Programming//Python//Blender//Blender-World-Generator//DirtBlock.png");
                 material.node_tree.links.new(BSDF.inputs['Base Color'], textureImage.outputs['Color']);
 
                 # Assign the texture to the object. 
@@ -98,7 +101,7 @@ def spawnGround():
                 else: 
                     activeObjectViewLayer.data.materials.append(material);
 
-
 # Calling the functions: 
 cleanScene();
 spawnGround();
+print('Code has run.');

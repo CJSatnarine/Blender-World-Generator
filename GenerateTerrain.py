@@ -57,7 +57,7 @@ def spawnGround():
                 activeObject.data.materials.append(material);
 
                 # Change the base colour. 
-                materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (1.0, 0.47, 1.0, 1.0);
+                materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0); 
 
 # Calling the functions: 
 cleanScene();

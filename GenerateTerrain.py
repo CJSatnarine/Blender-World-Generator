@@ -7,9 +7,9 @@ size = 1;
 # Setting the x, y, and z positions.
 x = y = z = size / 2;  
 # Setting the number of cubes in each coordinate. 
-xNum = 3;
-yNum = 3;
-zNum = 3;
+xNum = 5;
+yNum = 5;
+zNum = 1;
 # Setting the initial value for the number of cubes in each recursive call. 
 cubeCount = 0;
 # Setting the maximum amount of cubes that is needed to be created. 
@@ -44,8 +44,7 @@ def spawnGround():
                 bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size));
                 # Set the newly created cube as the active object. 
                 activeObject = bpy.context.active_object;
-                # Add a new material slot. 
-                # bpy.ops.object.material_slot_add();
+                
                 # Creating a new material and assigning it to the active cube. 
                 material = bpy.data.materials.new("Material");
                 material.use_nodes = True;
@@ -56,10 +55,14 @@ def spawnGround():
 
                 # Change the base colour. 
                 materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0); 
+# Function to spawn trees on the grass. 
+def spawnTree():
+    print("Tree has spawned.");
 
 # Calling the functions: 
 cleanScene();
 spawnGround();
+spawnTree;
 
 # Shows that the code ran. 
 print("The code ran.");

@@ -1,6 +1,5 @@
 #Imports.
 import bpy;
-import random;
 
 # Variables: 
 # Size of each cube.
@@ -15,7 +14,6 @@ zNum = 3;
 cubeCount = 0;
 # Setting the maximum amount of cubes that is needed to be created. 
 numOfCubes = xNum * yNum * zNum;
-print(numOfCubes);
 
 #Function to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
 def cleanScene():
@@ -63,6 +61,8 @@ def spawnGround():
 cleanScene();
 spawnGround();
 
+# Shows that the code ran. 
+print("The code ran.");
 
 # Notes: 
 # - For loop for the grid: 

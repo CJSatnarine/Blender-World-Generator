@@ -1,7 +1,6 @@
 #Imports.
 import bpy;
 
-# Variables: 
 # Size of each cube.
 size = 1;  
 # Setting the x, y, and z positions.
@@ -55,6 +54,7 @@ def spawnGround():
 
                 # Change the base colour. 
                 materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0); 
+
 # Function to spawn trees on the grass. 
 def spawnTree():
     print("Tree has spawned.");
@@ -62,16 +62,12 @@ def spawnTree():
 # Calling the functions: 
 cleanScene();
 spawnGround();
-spawnTree;
+spawnTree();
 
 # Shows that the code ran. 
 print("The code ran.");
 
 # Notes: 
-# - For loop for the grid: 
-#        - x is for creating cubes in the x axis. 
-#        - y is for creating cubes in the y axis. 
-#        - z is for creating cubes in the z axis. 
 # - I need to add the materials to the cubes and somehow save it in the Blender program. 
 # - I need to replace the nested for loop with a recursive function to spawn the ground. 
 # - I need to add a function to create a tree in a random position. This function will create cubes and put them in a way to look like a tree. It will also assign the correct materials to their proper cubes. 

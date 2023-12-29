@@ -55,14 +55,9 @@ def spawnGround():
                 # Change the base colour. 
                 materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0) 
 
-# Function to spawn trees on the grass. 
-def spawnTree():
-    print("Tree has spawned.")
-
 # Calling the functions: 
 cleanScene()
 spawnGround()
-spawnTree()
 
 # Shows that the code ran. 
 print("The code ran.")

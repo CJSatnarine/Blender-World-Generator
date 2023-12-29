@@ -1,34 +1,34 @@
 #Imports.
-import bpy;
+import bpy
 
 # Size of each cube.
-size = 1;  
+size = 1
 # Setting the x, y, and z positions.
-x = y = z = size / 2;  
+x = y = z = size / 2
 # Setting the number of cubes in each coordinate. 
-xNum = 5;
-yNum = 5;
-zNum = 1;
+xNum = 5
+yNum = 5
+zNum = 1
 # Setting the initial value for the number of cubes in each recursive call. 
-cubeCount = 0;
+cubeCount = 0
 # Setting the maximum amount of cubes that is needed to be created. 
-numOfCubes = xNum * yNum * zNum;
+numOfCubes = xNum * yNum * zNum
 
 #Function to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
 def cleanScene():
     # Changes the mode to object mode if it is in Edit mode. 
     if (bpy.context.active_object and bpy.context.active_object.mode == "EDIT"):
-        bpy.ops.object.editmode_toggle();
+        bpy.ops.object.editmode_toggle()
         
     # Checks for hidden stuff and unhides them.     
     for obj in bpy.data.objects: 
-        obj.hide_set(False);
-        obj.hide_select = False;
-        obj.hide_viewport = False;
+        obj.hide_set(False)
+        obj.hide_select = False
+        obj.hide_viewport = False
         
     # Selects all the objects and then deletes.     
-    bpy.ops.object.select_all(action = "SELECT");
-    bpy.ops.object.delete();
+    bpy.ops.object.select_all(action = "SELECT")
+    bpy.ops.object.delete()
 
 # Function to spawn the "ground" by creating several cubes using a nested for loop. 
 def spawnGround():  
@@ -37,35 +37,35 @@ def spawnGround():
         for y in range(yNum):
             for z in range(zNum): 
                 # Set the location. 
-                location = (x, y, z);
+                location = (x, y, z)
 
                 # Add the cubes. 
                 bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size));
                 # Set the newly created cube as the active object. 
-                activeObject = bpy.context.active_object;
+                activeObject = bpy.context.active_object
                 
                 # Creating a new material and assigning it to the active cube. 
-                material = bpy.data.materials.new("Material");
-                material.use_nodes = True;
-                materialNodes = material.node_tree.nodes;
-                materialLinks = material.node_tree.links;
-                
-                activeObject.data.materials.append(material);
+                material = bpy.data.materials.new("Material")
+                material.use_nodes = True
+                materialNodes = material.node_tree.nodes
+                materialLinks = material.node_tree.links
+            
+                activeObject.data.materials.append(material)
 
                 # Change the base colour. 
-                materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0); 
+                materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0) 
 
 # Function to spawn trees on the grass. 
 def spawnTree():
-    print("Tree has spawned.");
+    print("Tree has spawned.")
 
 # Calling the functions: 
-cleanScene();
-spawnGround();
-spawnTree();
+cleanScene()
+spawnGround()
+spawnTree()
 
 # Shows that the code ran. 
-print("The code ran.");
+print("The code ran.")
 
 # Notes: 
 # - I need to add the materials to the cubes and somehow save it in the Blender program. 

@@ -66,8 +66,8 @@ def buildTree():
     treeYPos = random.randint(0, yNum - 1)
     treeZPos = z + 0.5
 
+    # Add a single block as the location of the tree stump.
     bpy.ops.mesh.primitive_cube_add(size = size, location = (treeXPos, treeYPos, treeZPos), scale = (size, size, size))
-
 
 # Calling the functions: 
 cleanScene()

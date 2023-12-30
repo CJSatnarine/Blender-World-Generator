@@ -5,7 +5,7 @@ import random
 # Size of each cube.
 size = 1
 # Setting the x, y, and z positions.
-x = y = z = size / 2
+x = y = z = size
 # Setting the number of cubes in each coordinate. 
 xNum = 10
 yNum = 10
@@ -61,11 +61,17 @@ def createMaterial(red, blue, green, alpha):
 
 # Function to create the tree. 
 def buildTree():
-    print("tree")
+    # Getting a random position on top of the row of cubes.
+    treeXPos = random.randint(0, xNum - 1)
+    treeYPos = random.randint(0, yNum - 1)
+    treeZPos = z + 0.5
+
+    bpy.ops.mesh.primitive_cube_add(size = size, location = (treeXPos, treeYPos, treeZPos), scale = (size, size, size))
+
 
 # Calling the functions: 
 cleanScene()
-# spawnGround()
+spawnGround()
 buildTree()
 
 # Shows that the code ran. 

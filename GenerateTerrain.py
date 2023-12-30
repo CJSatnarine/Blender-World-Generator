@@ -1,5 +1,6 @@
 #Imports.
 import bpy
+import random
 
 # Size of each cube.
 size = 1
@@ -9,10 +10,6 @@ x = y = z = size / 2
 xNum = 10
 yNum = 10
 zNum = 1
-# Setting the initial value for the number of cubes in each recursive call. 
-cubeCount = 0
-# Setting the maximum amount of cubes that is needed to be created. 
-numOfCubes = xNum * yNum * zNum
 
 #Function to clean the scene. This removes all of the objects, collections, materials, particles, textures, images, curves, meshes, actions, nodes, and worlds from the scene. 
 def cleanScene():
@@ -46,7 +43,7 @@ def spawnGround():
                 activeObject = bpy.context.active_object
 
                 # Create the material (if the material already exists, then skip)
-                groundMaterial = createMaterial(0, 0, 0.6, 1) #Colour input is: red, blue, green, alpha
+                groundMaterial = createMaterial(0.027325, 0.080214, 0.450766, 1) #Colour input is: red, blue, green, alpha
                 assignMaterial(activeObject, groundMaterial)
 
 # Function to add a material to the selected object.
@@ -62,9 +59,14 @@ def createMaterial(red, blue, green, alpha):
     material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (red, green, blue, alpha)
     return material
 
+# Function to create the tree. 
+def buildTree():
+    print("tree")
+
 # Calling the functions: 
 cleanScene()
-spawnGround()
+# spawnGround()
+buildTree()
 
 # Shows that the code ran. 
-print("The code ran.")
+print("The code ran to the end successfully.")

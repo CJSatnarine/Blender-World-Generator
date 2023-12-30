@@ -68,10 +68,3 @@ spawnGround()
 
 # Shows that the code ran. 
 print("The code ran.")
-
-# Notes: 
-# - I need to add the materials to the cubes and somehow save it in the Blender program. 
-# - I need to replace the nested for loop with a recursive function to spawn the ground. 
-# - I need to add a function to create a tree in a random position. This function will create cubes and put them in a way to look like a tree. It will also assign the correct materials to their proper cubes. 
-# - I need to find a way to create creat and assign a single material to all the respective cubes. 
-# - I need to find a way to select every single face of the cube and then just add the image texture to them. 

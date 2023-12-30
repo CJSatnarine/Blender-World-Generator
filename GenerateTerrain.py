@@ -6,8 +6,8 @@ size = 1
 # Setting the x, y, and z positions.
 x = y = z = size / 2
 # Setting the number of cubes in each coordinate. 
-xNum = 5
-yNum = 5
+xNum = 10
+yNum = 10
 zNum = 1
 # Setting the initial value for the number of cubes in each recursive call. 
 cubeCount = 0
@@ -31,7 +31,7 @@ def cleanScene():
     bpy.ops.object.delete()
 
 # Function to spawn the "ground" by creating several cubes using a nested for loop. 
-def spawnGround():  
+def spawnGround(): 
     # Iterate over each grid "cell" we want a cube at.
     for x in range(xNum):
         for y in range(yNum):
@@ -46,7 +46,7 @@ def spawnGround():
                 activeObject = bpy.context.active_object
 
                 # Create the material (if the material already exists, then skip)
-                groundMaterial = createMaterial(0.3, 1, 0.2, 1)
+                groundMaterial = createMaterial(0, 0, 0.6, 1) #Colour input is: red, blue, green, alpha
                 assignMaterial(activeObject, groundMaterial)
 
 # Function to add a material to the selected object.

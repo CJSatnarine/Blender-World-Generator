@@ -40,20 +40,27 @@ def spawnGround():
                 location = (x, y, z)
 
                 # Add the cubes. 
-                bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size));
+                bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size))
+                
                 # Set the newly created cube as the active object. 
                 activeObject = bpy.context.active_object
-                
-                # Creating a new material and assigning it to the active cube. 
-                material = bpy.data.materials.new("Material")
-                material.use_nodes = True
-                materialNodes = material.node_tree.nodes
-                materialLinks = material.node_tree.links
-            
-                activeObject.data.materials.append(material)
 
-                # Change the base colour. 
-                materialNodes['Principled BSDF'].inputs['Base Color'].default_value = (0.056, 0.439, 0.059, 1.0) 
+                # Create the material (if the material already exists, then skip)
+                groundMaterial = createMaterial(0.3, 1, 0.2, 1)
+                assignMaterial(activeObject, groundMaterial)
+
+# Function to add a material to the selected object.
+def assignMaterial(object, material):
+    if object and object.data:
+        material.use_nodes = True
+        object.data.materials.append(material)
+
+# Function to create a new material
+def createMaterial(red, blue, green, alpha):
+    material = bpy.data.materials.new(name=f"Material_{len(bpy.data.materials)}")
+    material.use_nodes = True
+    material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (red, green, blue, alpha)
+    return material
 
 # Calling the functions: 
 cleanScene()

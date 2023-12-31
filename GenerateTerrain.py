@@ -81,10 +81,10 @@ def buildTree():
 
 # Function to make the low poly leaves for the tree.
 def createLowPolyLeaves(size, xPosition, yPosition, zPosition):
-    lowPolyLeaves = bpy.ops.mesh.primitive_cube_add(size = size, location = (xPosition, yPosition, zPosition), scale = (size, size, size))
+    bpy.ops.mesh.primitive_cube_add(size = size, location = (xPosition, yPosition, zPosition), scale = (size, size, size))
     activeObject = bpy.context.active_object
     colourOfLeaves = createMaterial(0.007951, 0.349087, 0.0003, 1)
-    assignMaterial(lowPolyLeaves, colourOfLeaves)
+    assignMaterial(activeObject, colourOfLeaves)
     return activeObject
 
 # Function to add a material to the selected object.

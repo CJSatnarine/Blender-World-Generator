@@ -104,6 +104,3 @@ def createMaterial(red, green, blue, alpha):
 cleanScene()
 spawnGround()
 buildTree()
-
-# Shows that the code ran. 
-print("The code ran to the end successfully.")

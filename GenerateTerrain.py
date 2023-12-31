@@ -73,10 +73,13 @@ def buildTree():
     while counter <= treeHeight:
         # Create the cube at that position.
         bpy.ops.mesh.primitive_cube_add(size = size, location = (treeXPos, treeYPos, treeZPos), scale = (size, size, size))
+        # Save the active object
+        activeObject = bpy.context.active_object
         # Increase the z position by 1 for the next iteration
         treeZPos += 1
         # Set the colour.
-
+        treeTrunkColour = createMaterial(0.195465, 0.004988, 0.020193, 1)
+        assignMaterial(activeObject, treeTrunkColour)
         # increase the counter
         counter += 1
 

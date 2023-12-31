@@ -43,7 +43,7 @@ def spawnGround():
                 activeObject = bpy.context.active_object
 
                 # Create the material (if the material already exists, then skip)
-                groundMaterial = createMaterial(0.027325, 0.080214, 0.450766, 1) #Colour input is: red, blue, green, alpha
+                groundMaterial = createMaterial(0.027325, 0.450766, 0.080214, 1)
                 assignMaterial(activeObject, groundMaterial)
 
 # Function to add a material to the selected object.
@@ -53,7 +53,7 @@ def assignMaterial(object, material):
         object.data.materials.append(material)
 
 # Function to create a new material
-def createMaterial(red, blue, green, alpha):
+def createMaterial(red, green, blue, alpha):
     material = bpy.data.materials.new(name=f"Material_{len(bpy.data.materials)}")
     material.use_nodes = True
     material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (red, green, blue, alpha)
@@ -78,7 +78,7 @@ def buildTree():
         # Increase the z position by 1 for the next iteration
         treeZPos += 1
         # Set the colour.
-        treeTrunkColour = createMaterial(0.195465, 0.004988, 0.020193, 1)
+        treeTrunkColour = createMaterial(0.195465, 0.020193,  0.004988, 1)
         assignMaterial(activeObject, treeTrunkColour)
         # increase the counter
         counter += 1

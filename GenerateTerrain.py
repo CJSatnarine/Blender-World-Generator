@@ -70,6 +70,10 @@ def buildTree():
         # increase the counter
         counter += 1
 
+# Function to make the low poly leaves for the tree.
+def createLowPolyLeaves(size, xPosition, yPosition, zPosition):
+    bpy.ops.mesh.primitive_cube_add(size = size, location = (xPosition, yPosition, zPosition))
+
 # Function to add a material to the selected object.
 def assignMaterial(object, material):
     if object and object.data:

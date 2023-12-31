@@ -46,19 +46,6 @@ def spawnGround():
                 groundMaterial = createMaterial(0.027325, 0.450766, 0.080214, 1)
                 assignMaterial(activeObject, groundMaterial)
 
-# Function to add a material to the selected object.
-def assignMaterial(object, material):
-    if object and object.data:
-        material.use_nodes = True
-        object.data.materials.append(material)
-
-# Function to create a new material
-def createMaterial(red, green, blue, alpha):
-    material = bpy.data.materials.new(name=f"Material_{len(bpy.data.materials)}")
-    material.use_nodes = True
-    material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (red, green, blue, alpha)
-    return material
-
 # Function to create the tree. 
 def buildTree():
     # Getting a random position on top of the row of cubes.
@@ -82,6 +69,19 @@ def buildTree():
         assignMaterial(activeObject, treeTrunkColour)
         # increase the counter
         counter += 1
+
+# Function to add a material to the selected object.
+def assignMaterial(object, material):
+    if object and object.data:
+        material.use_nodes = True
+        object.data.materials.append(material)
+
+# Function to create a new material
+def createMaterial(red, green, blue, alpha):
+    material = bpy.data.materials.new(name=f"Material_{len(bpy.data.materials)}")
+    material.use_nodes = True
+    material.node_tree.nodes["Principled BSDF"].inputs[0].default_value = (red, green, blue, alpha)
+    return material
 
 # Calling the functions: 
 cleanScene()

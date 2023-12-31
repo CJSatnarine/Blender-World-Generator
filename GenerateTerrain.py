@@ -52,12 +52,12 @@ def buildTree():
     treeXPos = random.randint(0, xNum - 1)
     treeYPos = random.randint(0, yNum - 1)
     treeZPos = z 
-    treeHeight = random.randint(3, 7)
+    treeTrunkHeight = random.randint(3, 5)
 
     # Add a single block as the location of the tree stump.
     # Loop through the treeheight to add a new cube as a chunk of the trunk. Add colour to the trunk. 
     counter = 1
-    while counter <= treeHeight:
+    while counter <= treeTrunkHeight:
         # Create the cube at that position.
         bpy.ops.mesh.primitive_cube_add(size = size, location = (treeXPos, treeYPos, treeZPos), scale = (size, size, size))
         # Save the active object

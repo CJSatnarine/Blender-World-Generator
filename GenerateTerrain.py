@@ -54,6 +54,12 @@ def buildTree():
     treeZPos = z 
     treeTrunkHeight = random.randint(3, 5)
 
+    # Variables for the leaves
+    leavesSize = (size * treeTrunkHeight) / 2
+    leavesXPosition = treeXPos
+    leavesYPosition = treeYPos
+    leavesZPosition = treeTrunkHeight + leavesSize
+
     # Add a single block as the location of the tree stump.
     # Loop through the treeheight to add a new cube as a chunk of the trunk. Add colour to the trunk. 
     counter = 1
@@ -65,14 +71,21 @@ def buildTree():
         # Increase the z position by 1 for the next iteration
         treeZPos += 1
         # Set the colour.
-        treeTrunkColour = createMaterial(0.195465, 0.020193,  0.004988, 1)
+        treeTrunkColour = createMaterial(0.195465, 0.020193, 0.004988, 1)
         assignMaterial(activeObject, treeTrunkColour)
         # increase the counter
         counter += 1
 
+    # Create the leaves of the tree. 
+    createLowPolyLeaves(leavesSize, leavesXPosition, leavesYPosition, leavesZPosition)
+
 # Function to make the low poly leaves for the tree.
 def createLowPolyLeaves(size, xPosition, yPosition, zPosition):
-    bpy.ops.mesh.primitive_cube_add(size = size, location = (xPosition, yPosition, zPosition))
+    lowPolyLeaves = bpy.ops.mesh.primitive_cube_add(size = size, location = (xPosition, yPosition, zPosition), scale = (size, size, size))
+    activeObject = bpy.context.active_object
+    colourOfLeaves = createMaterial(0.007951, 0.349087, 0.0003, 1)
+    assignMaterial(lowPolyLeaves, colourOfLeaves)
+    return activeObject
 
 # Function to add a material to the selected object.
 def assignMaterial(object, material):

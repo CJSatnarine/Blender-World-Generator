@@ -34,7 +34,7 @@ def spawnGround():
         for y in range(yNum):
             for z in range(zNum): 
                 # Set the location. 
-                location = (x, y, z)
+                location = (x, y, -z)
 
                 # Add the cubes. 
                 bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size))

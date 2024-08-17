@@ -36,7 +36,7 @@ def spawnGround():
                 # Set the location. 
                 location = (x, y, -z)
 
-                # Add the cubes. 
+                # Add the cubes. k
                 bpy.ops.mesh.primitive_cube_add(size = size, location = location, scale = (size, size, size))
                 
                 # Set the newly created cube as the active object. 
@@ -73,7 +73,7 @@ def buildTree():
         # Set the colour.
         treeTrunkColour = createMaterial(0.195465, 0.020193, 0.004988, 1)
         assignMaterial(activeObject, treeTrunkColour)
-        # increase the counter
+        # Increase the counter. 
         counter += 1
 
     # Create the leaves of the tree. 

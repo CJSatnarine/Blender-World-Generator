@@ -1,10 +1,12 @@
-# Blender Scene Generator
 
-Basically I'm trying to use cubes to create some sort of terrain or scene. 
+# :question: About
+Initially, this was a project where I planned to learn how to script using the Blender Python API by "procedurally" generating a world (similar to Minecraft). Now, it's just a little project where I make a tiny scene with a tree and some decorations randomly place across the scene. 
 
-I am using the Blender Python API to complete this. 
+# :camera_flash: Screenshots
+*Coming soon*
 
-Resources used: 
-- CGPython on YouTube. 
+# :hammer_and_wrench: Running the Script
+I guess just copy the script and paste it in the Blender Scripting Workspace. 
 
-## I plan to pause this project and work on it at a later time. 
+# :book: Resources Used
+- [CGPython on YouTube](https://www.youtube.com/@CGPython). 
